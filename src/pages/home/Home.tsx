@@ -8,6 +8,7 @@ import { useDebounce } from '@/components/hooks/useDebounce';
 
 import { TypographyH1 } from '@/components/typography/TypographyH1';
 
+
 import {LoaderCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -178,9 +179,9 @@ function Home() {
   },[mode])
 
   return (
-      <div className='bg-black w-full h-screen overflow-hidden'>
-        <div className="w-full bg-black container mx-auto">
-          <div className='flex bg-black h-16 items-center justify-center text-white gap-8'>
+      <div className='background-home w-full h-screen overflow-hidden'>
+        <div className="w-full  container mx-auto">
+          <div className='flex  h-16 items-center justify-center text-white gap-8'>
             <DialogRank rank={rank} setRank={setRank}></DialogRank>
             <TypographyH1>{mode}</TypographyH1>
             <DialogForm setGenreQuery={setGenre} setYoutubeVisual={setYoutubeVisual} youtubeVisual={youtubeVisual} genreQuery={genre} setMode={setMode} mode={mode}></DialogForm>
@@ -191,7 +192,7 @@ function Home() {
             data={(data) => (
               <>
                 {mode === 'Scegli' && <InputAutoComplete selectedValue={selectedValue} onSelectedValueChange={setSelectedValue} searchValue={searchValue} onSearchValueChange={setSearchValue} items={searchUnlimitedSong.data ?? []} isLoading={searchUnlimitedSong.isLoading} emptyMessage='Nessun risultato'/>}
-              <CardMusic artist={data.authorName} songName={data.songTitle} albumName={data.albumTitle} date={data.songReleaseDate} url={data.songYoutubeUrl} visual={data.youtubeVisual} playing={play} focus={isFocused}/>
+              <CardMusic artist={data.authorName} songName={data.songTitle} albumName={data.albumTitle} date={data.songReleaseDate} url={data.songYoutubeUrl} visual={data.youtubeVisual} playing={play} focus={isFocused} setPlaying={setPlay}/>
               </>
             )}
             loading={

@@ -215,3 +215,8 @@
 .box5{
   animation-name: quiet;
 }
+
+.background-home{
+  background-image: url("data:image/svg+xml,%3Csvg id='10015.io' viewBox='0 0 1200 630' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='svg-pattern' x='0' y='0' width='14' height='14' patternUnits='userSpaceOnUse' patternTransform='translate(4, 4) rotate(23) skewX(6)'%3E%3Csvg width='10' height='10' viewBox='0 0 100 100'%3E%3Cg fill='%23212121' opacity='0.75'%3E%3Crect width='100' height='100'%3E%3C/rect%3E%3C/g%3E%3C/svg%3E%3C/pattern%3E%3C/defs%3E%3Crect x='0' y='0' width='100%' height='100%' fill='%230b0b0b'%3E%3C/rect%3E%3Crect x='0' y='0' width='100%' height='100%' fill='url(%23svg-pattern)'%3E%3C/rect%3E%3C/svg%3E");
+  
+}
