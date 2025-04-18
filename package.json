@@ -8,7 +8,8 @@
     "dev:host": "vite --host",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "force":"npm install --legacy-peer-deps && npm run build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
