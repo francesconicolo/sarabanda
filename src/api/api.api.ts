@@ -72,7 +72,7 @@ export const ApiApis = {
   }, 
   async searchByIdSong ({ idSong }: { idSong: string }): Promise<Song>{
     const response = await axios.get(
-      'https://be.heardleitalia.com/api/heardle/song?songId=' + idSong
+      'https://be.heardleitalia.com/api/heardle/song/songId?songId=' + idSong
     );
     return response.data.result;
   }
