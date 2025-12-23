@@ -128,7 +128,7 @@ function Home() {
           const updated = [...prevRank];
           updated[0] = {
             ...updated[0],
-            green: (updated[0].green ?? 0) -1,
+            green: (updated[0].green >0 ? updated[0].green -1 : 0),
           };
           return updated;
         });
@@ -139,7 +139,7 @@ function Home() {
           const updated = [...prevRank];
           updated[0] = {
             ...updated[0],
-            red: (updated[0].red ?? 0) -1,
+            red: (updated[0].red >0 ? updated[0].red -1 : 0),
           };
           return updated;
         });
@@ -150,7 +150,7 @@ function Home() {
           const updated = [...prevRank];
           updated[0] = {
             ...updated[0],
-            yellow: (updated[0].yellow ?? 0) -1,
+            yellow: (updated[0].yellow >0 ? updated[0].yellow -1 : 0),
           };
           return updated;
         });
@@ -161,7 +161,7 @@ function Home() {
           const updated = [...prevRank];
           updated[0] = {
             ...updated[0],
-            blue: (updated[0].blue ?? 0) -1,
+            blue: (updated[0].blue >0 ? updated[0].blue -1 : 0),
           };
           return updated;
         });
@@ -172,7 +172,7 @@ function Home() {
           const updated = [...prevRank];
           updated[0] = {
             ...updated[0],
-            white: (updated[0].white ?? 0) > 0 ? - 1 : -0,
+            white: (updated[0].white > 0 ? updated[0].white -1 : 0),
           };
           return updated;
         });
