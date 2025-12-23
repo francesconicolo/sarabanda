@@ -12,7 +12,6 @@ import { FormSearch } from "./FormSearch"
 import { useState } from "react";
 import { Settings } from "lucide-react";
 
-
 export function DialogForm({
   setGenreQuery,
   setYoutubeVisual,
@@ -29,6 +28,7 @@ export function DialogForm({
   mode: "Random" | "Scegli";
 }) {
   const [isOpen, setIsOpen] = useState(false)
+  
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>

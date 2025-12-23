@@ -1,0 +1,70 @@
+[
+  {
+    "Colonne Sonore & Musical": [
+      "Parodia musicale",
+      "Musica per bambini",
+      "Colonne sonore",
+      "Colonna sonora"
+    ]
+  },
+  {
+    "Trap e rap": [
+      "Hip-Hop/Rap",
+      "Rap"
+    ]
+  },
+  {
+    "Pop e Hip-Hop": [
+      "R&B/Soul",
+      "Hip-hop",
+      "Pop"
+
+    ]
+  },
+  {
+    "Latino & Worldwide": [
+      "Urban latino-americana",
+      "Worldwide",
+      "Reggae"
+    ]
+  },
+  {
+    "Rock & Alternative": [
+      "Hard rock",
+      "Alternativa",
+      "Rock",
+      "Punk",
+      "Pop punk",
+      "Metal"
+    ]
+  },
+  {
+    "Elettronica & Dance": [
+      "Techno",
+      "Trance",
+      "Dance",
+      "House",
+      "Lounge",
+      "Elettronica"
+    ]
+  },
+  
+  {
+    "Classica & Liturgica": [
+      "Musica classica",
+      "Liturgica"
+    ]
+  },
+  {
+    "Folk": [
+      "Folk",
+      "Cantautori",
+      "Romanzi rosa"
+    ]
+  },
+  {
+    "Jazz & Blues": [
+      "Jazz"
+    ]
+  }
+]

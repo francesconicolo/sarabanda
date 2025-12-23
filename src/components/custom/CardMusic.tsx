@@ -9,9 +9,10 @@ import { Play } from "lucide-react";
 export default function CardMusic({artist,songName,albumName,date,url,visual,playing,focus,setPlaying}: {artist:string,songName:string,albumName:string,date:string,url:string,visual:string,playing:boolean,focus:boolean,setPlaying:React.Dispatch<React.SetStateAction<boolean>>}) {
   return (
     <div className={"w-[330px] h-[660px] bg-black rounded-3xl overflow-hidden border mt-6 " + (focus ? " border-green-700 " : "border-destructive")}>
+        
         <YouTubePlayer
           width={'100%'}
-          height={200}
+          height={185}
           controls={false}
           url={'https://www.youtube.com/watch?v='+url}
           playing={playing}

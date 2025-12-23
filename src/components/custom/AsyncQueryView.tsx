@@ -11,15 +11,18 @@ export interface AsyncQueryViewProps<T> {
 }
 
 export const AsyncQueryView = <T,>(props: AsyncQueryViewProps<T>) => {
-  if (props.query.isLoading) {
-    return props.loading ?? props.loading;
+  // Treat fetching/loading as loading state so caller sees consistent UI
+  if (props.query.isLoading || props.query.isFetching) {
+    return props.loading ?? null;
   }
 
   if (props.query.isError) {
-    return props.error && props.error(props.query.error);
+    return props.error ? props.error(props.query.error) : null;
   }
 
-  if (props.query.data) {
-    return props.data(props.query.data);
+  if (props.query.isSuccess) {
+    return props.data(props.query.data as T);
   }
+
+  return props.loading ?? null;
 };

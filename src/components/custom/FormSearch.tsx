@@ -14,20 +14,8 @@ import {
 } from '@/components/ui/form';
 import { useState } from 'react';
 import { SliderPopularity } from './SliderPopularity';
+import genres from "@/assets/genres/genresKeys.json"
 
-
-
-
-const items = [
-  'Rap, Hip-Hop e Trap',
-  'Jazz e Fusion',
-  'Musica Tradizionale e Folk Italiana',
-  'Musica Classica e Opera',
-  'Pop Italiano e Musica Leggera',
-  'House/Elettronica',
-  'Rock e Derivati',
-  'Colonne Sonore e Musica da Film'
-];
 
 const FormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
@@ -65,20 +53,23 @@ export function FormSearch({
     setYoutubeVisual(localVisual);
     closeDialog(false);
   };
-  
+
+  const items = genres.map((object) => Object.keys(object)[0]);
   const handleModeChange = () => {
     if (mode === 'Random') {
       setGenreQuery(items);
       setYoutubeVisual([0]);
       setMode('Scegli');
     } else {
-      setGenreQuery(['Rap, Hip-Hop e Trap', 'Pop Italiano e Musica Leggera']);
+      setGenreQuery([
+        'Trap e rap',
+        'Pop e Hip-Hop'
+      ]);
       setYoutubeVisual( [50]);
       setMode('Random');
     }
     closeDialog(false);
   };
-
 
   return (
     <Form {...form}>

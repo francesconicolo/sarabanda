@@ -1,4 +1,5 @@
-import { useGetSong, useSearchByIdSong, useSearchUnlimitedSong } from '@/api/api.queries';
+
+import { useGetUnlimitedSong, useSearchSongById, useSearchUnlimitedSong } from '@/api/song/song.queries';
 import { AsyncQueryView } from '@/components/custom/AsyncQueryView';
 import CardMusic from '@/components/custom/CardMusic';
 import { DialogForm } from '@/components/custom/DialogForm';
@@ -12,12 +13,14 @@ import { TypographyH1 } from '@/components/typography/TypographyH1';
 import {LoaderCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-// Render a YouTube video player
 
 function Home() {
   const [key, setKey] = useState<string>('');
   const [youtubeVisual,setYoutubeVisual]= useState<number[]>([50])
-  const [genre,setGenre] = useState<string[]>(['Rap, Hip-Hop e Trap','Pop Italiano e Musica Leggera'])
+  const [genre,setGenre] = useState<string[]>([
+    'Trap e rap',
+    'Pop e Hip-Hop'
+  ])
   const [rank, setRank] = useState<{statistiche: string,green: number,red: number ,yellow: number ,blue: number,white: number}[]>([{statistiche: "Statistiche",green: 0,red:0 ,yellow:0 ,blue: 0,white:0 }]);
   const [play, setPlay] = useState(false);
   const [mode,setMode] = useState<"Random"|"Scegli">("Random");
@@ -41,9 +44,12 @@ function Home() {
     };
   }, []);
 
-  const searchUnlimitedSong = useSearchUnlimitedSong({searchTerm: debouncedSearchValue, genres: genre, youtubeVisual});
-  const getSong = useGetSong(genre, youtubeVisual); // enabled controlla se il fetch parte
-  const getById = useSearchByIdSong(selectedValue);
+  const searchUnlimitedSong = useSearchUnlimitedSong(debouncedSearchValue, youtubeVisual, genre);
+  const getUnlimitedSongQuery = useGetUnlimitedSong({
+    genres: genre,
+    youtubeVisual: youtubeVisual
+  });// enabled controlla se il fetch parte
+  const getById = useSearchSongById(selectedValue);
 
   const handleKeyDown = (event: KeyboardEvent) => {
     setKey(event.key);
@@ -52,7 +58,7 @@ function Home() {
   useEffect(() => {
     switch (key) {
       case '*':
-        getSong.refetch();
+        getUnlimitedSongQuery.refetch();
         setPlay(false);
         break;
       case '+':
@@ -188,21 +194,24 @@ function Home() {
           </div>
           <div className="w-full h-full flex items-center justify-center text-white flex-col">
             <AsyncQueryView
-            query={mode === 'Random' ? getSong : getById}
+            query={mode === 'Random' ? getUnlimitedSongQuery : getById}
             data={(data) => (
               <>
                 {mode === 'Scegli' && <InputAutoComplete selectedValue={selectedValue} onSelectedValueChange={setSelectedValue} searchValue={searchValue} onSearchValueChange={setSearchValue} items={searchUnlimitedSong.data ?? []} isLoading={searchUnlimitedSong.isLoading} emptyMessage='Nessun risultato'/>}
-              <CardMusic artist={data.authorName} songName={data.songTitle} albumName={data.albumTitle} date={data.songReleaseDate} url={data.songYoutubeUrl} visual={data.youtubeVisual} playing={play} focus={isFocused} setPlaying={setPlay}/>
+              <CardMusic artist={data.albumAuthorsNameList[0]} songName={data.title} albumName={data.albumTitle} date={data.releaseDate} url={data.youtubeId} visual={data.youtubeViews.toString()} playing={play} focus={isFocused} setPlaying={setPlay}/>
               </>
             )}
             loading={
               <div className="w-full h-screen flex justify-center items-center animate-spin">
                 <LoaderCircle className="size-10" />
+                <div className='text-lg text-white'>ciaos</div>
               </div>
             }
             error={() => (
               <div className="w-full h-screen flex justify-center items-center">
                 <TypographyH1 className="mono">
+                  <div className='text-lg text-white'>ciaosss</div>
+              
                   Error 404 - Page not found
                 </TypographyH1>
               </div>

@@ -1,16 +1,15 @@
 export interface Song {
-  songId: number;
-  songDuration?: number;
-  songYoutubeUrl?: string;
-  songReleaseDate?: string;
-  albumTitle?: string;
-  authorName: string;
-  authorYoutubeChannel?: string;
-  songTitle?: string;
-  featuringArtistsString?: string;
-  featuringArtistsList?: string[];
-  dailySong?: false;
-  normalizedText?: string;
-  songArtistName: string;
-  startingSecondsDailySong?: number;
+  id: string;
+  title: string;
+  duration: number;
+  youtubeId: string;
+  releaseDate: string;
+  albumTitle: string;
+  albumAuthorsNameList: string[];
+  albumThumbnail: string;
+  featuringArtistsList: string[];
+  fullTitle: string;
+  youtubeViews: number;
+  dailySong?: boolean;
+  startingSecondsSong: number;
 }
