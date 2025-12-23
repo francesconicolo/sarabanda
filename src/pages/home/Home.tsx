@@ -204,14 +204,11 @@ function Home() {
             loading={
               <div className="w-full h-screen flex justify-center items-center animate-spin">
                 <LoaderCircle className="size-10" />
-                <div className='text-lg text-white'>ciaos</div>
               </div>
             }
             error={() => (
               <div className="w-full h-screen flex justify-center items-center">
                 <TypographyH1 className="mono">
-                  <div className='text-lg text-white'>ciaosss</div>
-              
                   Error 404 - Page not found
                 </TypographyH1>
               </div>
