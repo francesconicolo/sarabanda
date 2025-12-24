@@ -9,7 +9,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Medal } from "lucide-react"
-import { ChartRank } from "./ChartRank"
+import ChartRank from "./ChartRank";
+
 
 export function DialogRank(
   {rank,setRank}:
