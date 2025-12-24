@@ -6,9 +6,28 @@ import { TypographyH2 } from "../typography/TypographyH2";
 import { TypographySmall } from "../typography/TypographySmall";
 import { Play } from "lucide-react";
 
-export default function CardMusic({artist,songName,albumName,date,url,visual,playing,focus,setPlaying}: {artist:string,songName:string,albumName:string,date:string,url:string,visual:string,playing:boolean,focus:boolean,setPlaying:React.Dispatch<React.SetStateAction<boolean>>}) {
+export default function CardMusic({artist,songName,albumName,date,url,visual,playing,focus,setPlaying,setIsFocused}: {artist:string,songName:string,albumName:string,date:string,url:string,visual:string,playing:boolean,focus:boolean,setPlaying:React.Dispatch<React.SetStateAction<boolean>>,setIsFocused:React.Dispatch<React.SetStateAction<boolean>>}) {
+  
+  const formatVisual = (visual: string) => {
+      let lengthString = visual.length;
+      let formattedString = "";
+      
+      // Loop through the string in chunks of 3 characters
+      while (lengthString > 3) {
+          // Get the last 3 characters and prepend it to the formatted string
+          let tempString = visual.slice(lengthString - 3, lengthString);
+          formattedString = "." + tempString + formattedString;
+          lengthString -= 3;  // Decrease length by 3 each time
+      }
+      
+      // Add the remaining part of the string (less than 3 characters) at the front
+      formattedString = visual.slice(0, lengthString) + formattedString;
+      
+      return formattedString;
+  };
+
   return (
-    <div className={"w-[330px] h-[660px] bg-black rounded-3xl overflow-hidden border mt-6 " + (focus ? " border-green-700 " : "border-destructive")}>
+    <div className={"w-[330px] h-[660px] bg-black rounded-3xl overflow-hidden border mt-6 " + (focus ? " border-green-700 " : "border-destructive")} onClick={()=>setIsFocused(true)}>
         
         <YouTubePlayer
           width={'100%'}
@@ -47,7 +66,7 @@ export default function CardMusic({artist,songName,albumName,date,url,visual,pla
             </div>
             <div className="text-center leading-4">
               <TypographySmall className="text-white/80" >Visualizzazioni</TypographySmall>
-              <TypographyH4 className="text-white font">{visual}</TypographyH4>
+              <TypographyH4 className="text-white font">{formatVisual(visual)}</TypographyH4>
             </div>
           </div>
         </div>

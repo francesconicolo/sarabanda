@@ -26,6 +26,8 @@ type Props<T extends string> = {
   isLoading?: boolean;
   emptyMessage?: string;
   placeholder?: string;
+  setIsFocused: (value: boolean) => void;
+
 };
 
 export function InputAutoComplete<T extends string>({
@@ -36,6 +38,7 @@ export function InputAutoComplete<T extends string>({
   items,
   isLoading,
   emptyMessage,
+  setIsFocused,
   placeholder = 'Cerca...'
 }: Props<T>) {
   const [open, setOpen] = useState(false);
@@ -70,6 +73,7 @@ export function InputAutoComplete<T extends string>({
     if (inputValue === selectedValue) {
       reset();
     } else {
+      setIsFocused(true)
       onSelectedValueChange(inputValue as T);
       onSearchValueChange(labels[inputValue] ?? '');
     }
@@ -87,8 +91,8 @@ export function InputAutoComplete<T extends string>({
               onValueChange={onSearchValueChange}
               onKeyDown={(e) => setOpen(e.key !== 'Escape')}
               onMouseDown={() => setOpen((open) => !!searchValue || !open)}
-              onFocus={() => setOpen(true)}
-              onBlur={onInputBlur}
+              onFocus={() => {setOpen(true);setIsFocused(false)}}
+              onBlur={()=>{onInputBlur}}
             >
               <Input placeholder={placeholder} />
             </CommandPrimitive.Input>

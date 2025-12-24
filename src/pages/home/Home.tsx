@@ -56,128 +56,131 @@ function Home() {
   };
   
   useEffect(() => {
-    switch (key) {
-      case '*':
-        getUnlimitedSongQuery.refetch();
-        setPlay(false);
-        break;
-      case '+':
-        setPlay(true);
-        break;
-      case '-':
-        setPlay(false);
-        break;
-      //BOTTONE PER AGGIUNGERE 1 AL VERDE
-      case '1':
-        setRank((prevRank) => {
-          const updated = [...prevRank];
-          updated[0] = {
-            ...updated[0],
-            green: (updated[0].green ?? 0) + 1,
-          };
-          return updated;
-        });
-        break;
-      //BOTTONE PER AGGIUNGERE 1 AL ROSSO
-      case '2':
-        setRank((prevRank) => {
-          const updated = [...prevRank];
-          updated[0] = {
-            ...updated[0],
-            red: (updated[0].red ?? 0) + 1,
-          };
-          return updated;
-        });
-        break;
-      //BOTTONE PER AGGIUNGERE 1 AL GIALLO
-      case '3':
-        setRank((prevRank) => {
-          const updated = [...prevRank];
-          updated[0] = {
-            ...updated[0],
-            yellow: (updated[0].yellow ?? 0) + 1,
-          };
-          return updated;
-        });
-        break;
-      //BOTTONE PER AGGIUNGERE 1 AL BLU
-      case '4':
-        setRank((prevRank) => {
-          const updated = [...prevRank];
-          updated[0] = {
-            ...updated[0],
-            blue: (updated[0].blue ?? 0) + 1,
-          };
-          return updated;
-        });
-        break;
-      //BOTTONE PER AGGIUNGERE 1 AL WHITE
-      case '5':
-        setRank((prevRank) => {
-          const updated = [...prevRank];
-          updated[0] = {
-            ...updated[0],
-            white: (updated[0].white ?? 0) + 1,
-          };
-          return updated;
-        });
-        break;
-      //BOTTONE PER RIMUOVERE 1 AL VERDE
-      case '6':
-        setRank((prevRank) => {
-          const updated = [...prevRank];
-          updated[0] = {
-            ...updated[0],
-            green: (updated[0].green >0 ? updated[0].green -1 : 0),
-          };
-          return updated;
-        });
-        break;
-      //BOTTONE PER RIMUOVERE 1 AL ROSSO
-      case '7':
-        setRank((prevRank) => {
-          const updated = [...prevRank];
-          updated[0] = {
-            ...updated[0],
-            red: (updated[0].red >0 ? updated[0].red -1 : 0),
-          };
-          return updated;
-        });
-        break;
-      //BOTTONE PER RIMUOVERE 1 AL GIALLO
-      case '8':
-        setRank((prevRank) => {
-          const updated = [...prevRank];
-          updated[0] = {
-            ...updated[0],
-            yellow: (updated[0].yellow >0 ? updated[0].yellow -1 : 0),
-          };
-          return updated;
-        });
-        break;
-      //BOTTONE PER RIMUOVERE 1 AL BLU
-      case '9':
-        setRank((prevRank) => {
-          const updated = [...prevRank];
-          updated[0] = {
-            ...updated[0],
-            blue: (updated[0].blue >0 ? updated[0].blue -1 : 0),
-          };
-          return updated;
-        });
-        break;
-      //BOTTONE PER RIMUOVERE 1 AL WHITE
-      case '0':
-        setRank((prevRank) => {
-          const updated = [...prevRank];
-          updated[0] = {
-            ...updated[0],
-            white: (updated[0].white > 0 ? updated[0].white -1 : 0),
-          };
-          return updated;
-        });
-        break;
+    if (isFocused)
+    {
+      switch (key) {
+        case '*':
+          getUnlimitedSongQuery.refetch();
+          setPlay(false);
+          break;
+        case '+':
+          setPlay(true);
+          break;
+        case '-':
+          setPlay(false);
+          break;
+        //BOTTONE PER AGGIUNGERE 1 AL VERDE
+        case '1':
+          setRank((prevRank) => {
+            const updated = [...prevRank];
+            updated[0] = {
+              ...updated[0],
+              green: (updated[0].green ?? 0) + 1,
+            };
+            return updated;
+          });
+          break;
+        //BOTTONE PER AGGIUNGERE 1 AL ROSSO
+        case '2':
+          setRank((prevRank) => {
+            const updated = [...prevRank];
+            updated[0] = {
+              ...updated[0],
+              red: (updated[0].red ?? 0) + 1,
+            };
+            return updated;
+          });
+          break;
+        //BOTTONE PER AGGIUNGERE 1 AL GIALLO
+        case '3':
+          setRank((prevRank) => {
+            const updated = [...prevRank];
+            updated[0] = {
+              ...updated[0],
+              yellow: (updated[0].yellow ?? 0) + 1,
+            };
+            return updated;
+          });
+          break;
+        //BOTTONE PER AGGIUNGERE 1 AL BLU
+        case '4':
+          setRank((prevRank) => {
+            const updated = [...prevRank];
+            updated[0] = {
+              ...updated[0],
+              blue: (updated[0].blue ?? 0) + 1,
+            };
+            return updated;
+          });
+          break;
+        //BOTTONE PER AGGIUNGERE 1 AL WHITE
+        case '5':
+          setRank((prevRank) => {
+            const updated = [...prevRank];
+            updated[0] = {
+              ...updated[0],
+              white: (updated[0].white ?? 0) + 1,
+            };
+            return updated;
+          });
+          break;
+        //BOTTONE PER RIMUOVERE 1 AL VERDE
+        case '6':
+          setRank((prevRank) => {
+            const updated = [...prevRank];
+            updated[0] = {
+              ...updated[0],
+              green: (updated[0].green >0 ? updated[0].green -1 : 0),
+            };
+            return updated;
+          });
+          break;
+        //BOTTONE PER RIMUOVERE 1 AL ROSSO
+        case '7':
+          setRank((prevRank) => {
+            const updated = [...prevRank];
+            updated[0] = {
+              ...updated[0],
+              red: (updated[0].red >0 ? updated[0].red -1 : 0),
+            };
+            return updated;
+          });
+          break;
+        //BOTTONE PER RIMUOVERE 1 AL GIALLO
+        case '8':
+          setRank((prevRank) => {
+            const updated = [...prevRank];
+            updated[0] = {
+              ...updated[0],
+              yellow: (updated[0].yellow >0 ? updated[0].yellow -1 : 0),
+            };
+            return updated;
+          });
+          break;
+        //BOTTONE PER RIMUOVERE 1 AL BLU
+        case '9':
+          setRank((prevRank) => {
+            const updated = [...prevRank];
+            updated[0] = {
+              ...updated[0],
+              blue: (updated[0].blue >0 ? updated[0].blue -1 : 0),
+            };
+            return updated;
+          });
+          break;
+        //BOTTONE PER RIMUOVERE 1 AL WHITE
+        case '0':
+          setRank((prevRank) => {
+            const updated = [...prevRank];
+            updated[0] = {
+              ...updated[0],
+              white: (updated[0].white > 0 ? updated[0].white -1 : 0),
+            };
+            return updated;
+          });
+          break;
       }
+    }
   }, [key]);
 
   useEffect(() => {
@@ -197,8 +200,8 @@ function Home() {
             query={mode === 'Random' ? getUnlimitedSongQuery : getById}
             data={(data) => (
               <>
-                {mode === 'Scegli' && <InputAutoComplete selectedValue={selectedValue} onSelectedValueChange={setSelectedValue} searchValue={searchValue} onSearchValueChange={setSearchValue} items={searchUnlimitedSong.data ?? []} isLoading={searchUnlimitedSong.isLoading} emptyMessage='Nessun risultato'/>}
-              <CardMusic artist={data.albumAuthorsNameList[0]} songName={data.title} albumName={data.albumTitle} date={data.releaseDate} url={data.youtubeId} visual={data.youtubeViews.toString()} playing={play} focus={isFocused} setPlaying={setPlay}/>
+                {mode === 'Scegli' && <InputAutoComplete selectedValue={selectedValue} onSelectedValueChange={setSelectedValue} searchValue={searchValue} onSearchValueChange={setSearchValue} items={searchUnlimitedSong.data ?? []} isLoading={searchUnlimitedSong.isLoading} setIsFocused={setIsFocused} emptyMessage='Nessun risultato'/>}
+              <CardMusic artist={data.albumAuthorsNameList[0]} songName={data.title} albumName={data.albumTitle} date={data.releaseDate} url={data.youtubeId} visual={data.youtubeViews.toString()} playing={play} focus={isFocused} setIsFocused={setIsFocused} setPlaying={setPlay}/>
               </>
             )}
             loading={
